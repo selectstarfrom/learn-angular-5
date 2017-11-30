@@ -1,0 +1,7 @@
+<p>
+    The Server {{serverId}} is
+    <span
+        [ngClass]="{online: serverStatus ==='online', offline: serverStatus==='offline'}">
+        {{getServerStatus()}}
+    </span>
+</p>
