@@ -4,12 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { BasicHighlighter } from './highlighter/basichighlighter.directive';
+
+import { FontColor } from './highlighter/fontColor.directive';
+import { BackgroundColor } from './highlighter/backgroundColor.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BasicHighlighter
+    FontColor,
+    BackgroundColor,
+    
   ],
   imports: [
     BrowserModule,
