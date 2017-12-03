@@ -5,10 +5,12 @@ export class AuthService {
 
     loggedIn: boolean = false;
 
-    isAtuhenticated() {
+    isAuthenticated() {
+
         const promise = new Promise(
             (resolve, reject) => {
                 setTimeout(() => {
+                    console.log("Value:" + this.loggedIn)
                     resolve(this.loggedIn);
                 }, 800);
             });
