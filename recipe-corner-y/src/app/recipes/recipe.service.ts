@@ -1,7 +1,6 @@
 import { Recipe } from "./recipe-list/recipe.model";
 import { EventEmitter } from "@angular/core";
 
-
 export class RecipeService {
 
     selectedRecipe = new EventEmitter<Recipe>();
@@ -14,9 +13,5 @@ export class RecipeService {
 
     getRecipes() {
         return this.recipes.slice();
-    }
-
-    getRecipe(index: number) {
-        return this.getRecipes()[index];
     }
 }
