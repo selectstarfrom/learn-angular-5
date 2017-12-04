@@ -7,6 +7,7 @@
       <div class="row">
 
         <form #f="ngForm" (ngSubmit)="onSubmit()">
+          
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" ngModel name="username" #username="ngModel" required>
@@ -15,11 +16,11 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" email ngModel name="email" #email="ngModel">
+            <input type="text" class="form-control" email ngModel name="email" #email="ngModel" required>
             <span class="help-block text-danger" *ngIf="!email.valid && email.touched">Please enter the value for email address</span>
           </div>
 
-          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 
         </form>
 
@@ -29,9 +30,9 @@
 
       <div class="row">
         <div class="col-xs-12" *ngIf="submitted">
-          <h4>You have submitted the following Data:</h4>
-          <p>{{user.username}}</p>
-          <p>{{user.email}}</p>
+          <h3>You have submitted the following Data:</h3>
+          <p>Username: {{user.username}}</p>
+          <p>Email: {{user.email}}</p>
         </div>
       </div>
 
