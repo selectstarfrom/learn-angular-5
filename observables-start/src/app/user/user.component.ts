@@ -4,6 +4,7 @@ import { Observable, Observer } from 'rxjs';
 import 'rxjs/Rx';
 import { setTimeout } from 'timers';
 import { Subscription } from 'rxjs/Subscription';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +20,7 @@ export class UserComponent implements OnInit, OnDestroy {
   numberDataSubscription: Subscription;
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
     this.route.params
@@ -30,11 +31,11 @@ export class UserComponent implements OnInit, OnDestroy {
       );
 
     this.nuberDataobservable = Observable.interval(1000);
-    this.numberDataSubscription = this.nuberDataobservable.subscribe(
-      (number: number) => {
-        console.log(number);
-      }
-    );
+    // this.numberDataSubscription = this.nuberDataobservable.subscribe(
+    //   (number: number) => {
+    //     console.log(number);
+    //   }
+    // );
 
     this.stringDataObservable = Observable.create((observer: Observer<string>) => {
       setTimeout(() => {
@@ -48,14 +49,19 @@ export class UserComponent implements OnInit, OnDestroy {
       }, 6000);
     });
 
-    this.stringDataSubscription = this.stringDataObservable.subscribe((data: string) => {
-      console.log(data);
-    });
+    // this.stringDataSubscription = this.stringDataObservable.subscribe((data: string) => {
+    //   console.log(data);
+    // });
   }
 
   ngOnDestroy() {
     this.numberDataSubscription.unsubscribe();
     this.stringDataSubscription.unsubscribe();
   }
+
+
+  onActivate(){
+    this.userService.userActivated.next(this.id);
+  }    
 
 }
